@@ -1,3 +1,6 @@
+import { verify } from "crypto";
+import { products } from "./Utils/item-types";
+
 export class Item {
   name: string;
   sellIn: number;
