@@ -6,6 +6,11 @@ export class Item {
   sellIn: number;
   quality: number;
 
+  constructor(name?: string, sellIn?: number, quality?: number) {
+    this.name = name!;
+    this.sellIn = sellIn!;
+    this.quality = quality!;
+  }
 
   agedBrieMethod(items: Item): void {
     if (this.verifyQuality(items.quality)) {
