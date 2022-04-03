@@ -27,10 +27,10 @@ export class Item {
 
   backstageMethod(item: Item): void {
     if (this.verifyQuality(item.quality)) {
-      if (item.quality <= 10 && item.quality > 5) {
+      if (item.sellIn <= 10 && item.sellIn > 5) {
         item.quality += 2;
         item.sellIn--;
-      } else if (item.quality <= 5 && item.quality > 0) {
+      } else if (item.sellIn <= 5 && item.sellIn > 0) {
         item.quality += 3;
         item.sellIn--;
       }
