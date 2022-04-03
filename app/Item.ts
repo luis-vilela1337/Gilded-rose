@@ -20,7 +20,7 @@ export class Item {
   }
 
   sulfurasMethod(item: Item): void {
-    if (item.sellIn) {
+    if (this.verifySellIn(item.sellIn)) {
       item.sellIn--;
     }
   }
@@ -33,9 +33,9 @@ export class Item {
       } else if (item.sellIn <= 5 && item.sellIn > 0) {
         item.quality += 3;
         item.sellIn--;
+      } else {
+        item.quality = 0;
       }
-    } else {
-      item.quality = 0;
     }
   }
   conjuredMethod(item: Item): void {
@@ -64,7 +64,7 @@ export class Item {
   }
 
   verifyQuality(quality: number): boolean {
-    if (quality >= 0 || quality <= 50) {
+    if (quality > 0 && quality <= 50) {
       return true;
     }
     return false;
