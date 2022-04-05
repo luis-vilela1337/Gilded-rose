@@ -3,7 +3,7 @@ import { products } from "./Utils/item-types";
 
 export class GildedRose {
   items: Array<Item>;
-  private methodCaller: Item = new Item();
+  private readonly methodCaller: Item = new Item();
   constructor(items = [] as Array<Item>) {
     this.items = items;
   }
@@ -19,7 +19,7 @@ export class GildedRose {
       } else if (products.conjureds.name === this.items[i].name) {
         this.methodCaller.conjuredMethod(this.items[i]);
       } else {
-        this.methodCaller.genericMethod(this.items[i]);
+        this.methodCaller.unregisteredProducts(this.items[i]);
       }
     }
     return this.items;
