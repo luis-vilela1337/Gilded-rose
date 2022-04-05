@@ -45,7 +45,8 @@ export class Item {
     }
   }
 
-  genericMethod(item: Item): void {
+  //method for generic produtcs that does not have a specific logics
+  unregisteredProducts(item: Item): void {
     if (this.verifyQuality(item.quality)) {
       if (this.verifySellIn(item.sellIn)) {
         item.sellIn--;
