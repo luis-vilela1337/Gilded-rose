@@ -8,6 +8,7 @@ export const products = {
   sulfuras: {
     name: "Sulfuras, Hand of Ragnaros",
     quality: 80,
+    //quality fixed
   },
   conjureds: {
     name: "Conjured Mana Cake",
