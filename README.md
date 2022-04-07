@@ -38,8 +38,3 @@ To run all tests in watch mode
 npm run test:jest:watch
 ```
 
-### Mocha way
-
-```sh
-npm run test:mocha
-```
