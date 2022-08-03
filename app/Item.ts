@@ -1,5 +1,4 @@
-import { verify } from "crypto";
-import { products } from "./Utils/item-types";
+import { VerifyItem } from "./providers/Verify";
 
 export class Item {
   name: string;
@@ -12,62 +11,15 @@ export class Item {
     this.quality = quality!;
   }
 
-  agedBrieMethod(items: Item): void {
-    if (this.verifyQuality(items.quality)) {
-      items.quality++;
-      items.sellIn--;
-    }
-  }
-
-  sulfurasMethod(item: Item): void {
-    if (this.verifySellIn(item.sellIn)) {
-      item.sellIn--;
-    }
-  }
-
-  backstageMethod(item: Item): void {
-    if (this.verifyQuality(item.quality)) {
-      if (item.sellIn <= 10 && item.sellIn > 5) {
-        item.quality += 2;
-        item.sellIn--;
-      } else if (item.sellIn <= 5 && item.sellIn > 0) {
-        item.quality += 3;
-        item.sellIn--;
+  execute(): void {
+    if (VerifyItem.verifyQuality(this.quality)) {
+      if (VerifyItem.verifySellIn(this.sellIn)) {
+        this.sellIn--;
+        this.quality--;
       } else {
-        item.quality = 0;
+        this.sellIn--;
+        this.quality -= 2;
       }
     }
-  }
-  conjuredMethod(item: Item): void {
-    if (this.verifyQuality(item.quality)) {
-      item.sellIn--;
-      item.quality -= 2;
-    }
-  }
-
-  //method for generic produtcs that does not have a specific logics
-  unregisteredProducts(item: Item): void {
-    if (this.verifyQuality(item.quality)) {
-      if (this.verifySellIn(item.sellIn)) {
-        item.sellIn--;
-        item.quality--;
-      } else {
-        item.sellIn--;
-        item.quality -= 2;
-      }
-    }
-  }
-  verifySellIn(sellIn: number): boolean {
-    if (sellIn > 0) {
-      return true;
-    }
-    return false;
-  }
-
-  verifyQuality(quality: number): boolean {
-    if (quality > 0 && quality <= 50) {
-      return true;
-    }
-    return false;
   }
 }
